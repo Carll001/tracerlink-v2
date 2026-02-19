@@ -36,12 +36,18 @@ class AlumniService
             $data['middle_initial'] = strtoupper($data['middle_initial']);
         }
 
-        // if unemployed/student => null company fields
+        // if not employed => null work fields
         $status = Arr::get($data, 'employment_status');
-        if (in_array($status, ['Unemployed', 'Student'], true)) {
+
+        if (in_array($status, ['Unemployed', 'No Answer'], true)) {
             $data['employment_sector'] = null;
+            $data['employment_classification'] = null;
             $data['company_name'] = null;
             $data['work_location'] = null;
+
+            // NEW
+            $data['position_nature_of_work'] = null;
+            $data['job_aligned_with_course'] = null;
         }
 
         return $data;

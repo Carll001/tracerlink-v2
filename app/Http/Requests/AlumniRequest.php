@@ -42,6 +42,11 @@ class AlumniRequest extends FormRequest
                 'max:30',
             ],
 
+            'sex' => [
+                'required',
+                'in:Male,Female,Prefer not to say',
+            ],
+
             'email' => [
                 'required',
                 'email',
@@ -58,18 +63,39 @@ class AlumniRequest extends FormRequest
             'program_taken' => ['required', 'string', 'max:150'],
             'year_batch_graduated' => ['required', 'string', 'max:50'],
 
+            'further_studies' => [
+                'required',
+                'in:Yes,No,No Answer',
+            ],
+
             // ===============================
             // EMPLOYMENT INFORMATION
             // ===============================
 
             'employment_status' => [
                 'required',
-                'in:Employed,Unemployed,Self-Employed,Student,Other'
+                'in:Employed,Unemployed,No Answer'
             ],
 
-            'employment_sector' => ['nullable', 'string', 'max:80'],
+            'employment_sector' => [
+                'nullable',
+                'in:Government,Private,Self Employment',
+            ],
+
+            'employment_classification' => [
+                'nullable',
+                'in:Local Company PH,Foreign Company in PH,Foreign Company in Abroad,I am Self Employed',
+            ],
+
             'company_name' => ['nullable', 'string', 'max:150'],
             'work_location' => ['nullable', 'string', 'max:150'],
+
+            // NEW (EMPLOYMENT DETAILS)
+            'position_nature_of_work' => ['nullable', 'string', 'max:150'],
+            'job_aligned_with_course' => [
+                'nullable',
+                'in:Yes,No,No Answer',
+            ],
 
             // ===============================
             // FEEDBACK
@@ -84,6 +110,11 @@ class AlumniRequest extends FormRequest
         return [
             'overall_rating.between' => 'Rating must be between 1 and 5.',
             'employment_status.in' => 'Invalid employment status selected.',
+            'employment_sector.in' => 'Invalid employment sector selected.',
+            'employment_classification.in' => 'Invalid employment classification selected.',
+            'sex.in' => 'Invalid sex selected.',
+            'further_studies.in' => 'Invalid further studies option selected.',
+            'job_aligned_with_course.in' => 'Invalid option selected for job alignment.',
         ];
     }
 }
