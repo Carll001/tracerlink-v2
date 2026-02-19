@@ -29,10 +29,19 @@ const handleSubmit = () => {
             toast.success('Program created successfully!')
             closeModal.value = false;
         },
+        onError: () => {
+            toast.error('Something went wrong!');
+        },
     });
 };
 
 const closeModal = ref(false);
+
+const handleCloseModal = () => {
+    closeModal.value = false;
+    form.reset();
+    form.clearErrors();
+};
 </script>
 
 <template>
@@ -67,8 +76,8 @@ const closeModal = ref(false);
                         </div>
                     </section>
                     <DialogFooter>
-                        <DialogClose>
-                            <Button variant="ghost">Close</Button>
+                        <DialogClose as-child>
+                            <Button @click="handleCloseModal" variant="ghost">Close</Button>
                         </DialogClose>
                         <Button type="submit">Save</Button>
                     </DialogFooter>

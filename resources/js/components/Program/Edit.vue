@@ -35,12 +35,19 @@ const handleSubmit = () => {
     form.put(program.update(props.program.id).url, {
         onSuccess: () => {
             toast.success('Program updated successfully!');
-            closeModal.value = (false);
+            closeModal.value = false;
+            form.reset();
         },
         onError: () => {
             toast.error('Something went wrong!');
         },
     });
+};
+
+const handleCloseModal = () => {
+    closeModal.value = false;
+    form.reset();
+    form.clearErrors();
 };
 </script>
 
@@ -77,8 +84,8 @@ const handleSubmit = () => {
                     </div>
                 </section>
                 <DialogFooter>
-                    <DialogClose>
-                        <Button variant="ghost">Cancel</Button>
+                    <DialogClose as-child>
+                        <Button @click="handleCloseModal" variant="ghost">Cancel</Button>
                     </DialogClose>
                     <Button type="submit" :disabled="form.processing">
                        Update

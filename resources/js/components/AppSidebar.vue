@@ -17,6 +17,7 @@ import { type NavItem } from '@/types';
 import AppLogo from './AppLogo.vue';
 import { dashboard } from '@/routes';
 import alumniLink from '@/routes/alumni'
+import program from '@/routes/program';
 
 
 
@@ -31,6 +32,11 @@ const mainNavItems: NavItem[] = [
      {
         title: 'Alumni Form',
         href: alumniLink.create(),
+        icon: GraduationCap,
+    },
+     {
+        title: 'Program Management',
+        href: program.index(),
         icon: GraduationCap,
     },
 ];

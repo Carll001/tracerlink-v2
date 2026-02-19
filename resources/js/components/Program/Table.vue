@@ -9,13 +9,12 @@ import {
 } from '@/components/ui/table';
 import {
     Empty,
-    EmptyContent,
     EmptyDescription,
     EmptyHeader,
     EmptyMedia,
     EmptyTitle,
 } from '@/components/ui/empty';
-import { FolderCode } from 'lucide-vue-next';
+import { TableOfContents } from 'lucide-vue-next';
 import { Program } from '@/types';
 import Edit from './Edit.vue';
 import Delete from './Delete.vue';
@@ -44,7 +43,7 @@ defineProps<{
                         <Empty>
                             <EmptyHeader>
                                 <EmptyMedia variant="icon">
-                                    <FolderCode />
+                                    <TableOfContents/>
                                 </EmptyMedia>
                                 <EmptyTitle>No Program Yet</EmptyTitle>
                                 <EmptyDescription>
